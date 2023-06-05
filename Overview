@@ -1,0 +1,31 @@
+Overview
+
+1 - make a database:
+	1.1 - ER diagram
+	1.2 - relational model
+2 - relational algebra for queries
+3- sql commands for queries
+
+what the DB is about: 
+DB for tracking and data management of research projects.
+
+Project types: 
+	- conference papers
+	- internal papers
+	- workshops
+	- assisting in 
+ . all the above are domestic or international. 
+
+Institute types: 
+	- Academic :
+		-- research centers 
+		-- Universities
+	-Practical (عملی)
+		-- Gov Org
+		-- N GOV org
+	
+for each institute: 
+	employee data (management and workforce), budget 		status and financial history, centers and buildings info.
+
+
+
