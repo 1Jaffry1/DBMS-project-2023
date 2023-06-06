@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2023-06-06T18:57:38.047Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0" etag="HejqKr2TU3M64FfauoW2" version="21.1.1" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-06-06T19:12:40.706Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0" etag="xgFnA8lU9r9AO7he1olq" version="21.1.1" type="github" pages="2">
   <diagram id="Gjh91Je4ySEMAI1Sj-sg" name="Page-1">
-    <mxGraphModel dx="1866" dy="641" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2256" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="DnQ4--VGCIlJsh_Cb7lD-5" value="Institutes" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1145" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="1165" y="20" width="115" height="50" as="geometry" />
         </mxCell>
         <mxCell id="DnQ4--VGCIlJsh_Cb7lD-6" value="related &amp;nbsp;Information&lt;br/&gt;of member&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="230" y="1800" width="120" height="60" as="geometry" />
@@ -391,7 +391,7 @@
             <mxPoint x="630" y="1010" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4cyTBoL2mbChuSqTaiiy-26" value="&lt;div&gt;Reseacher_ID&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="4cyTBoL2mbChuSqTaiiy-26" value="&lt;div&gt;Reseacher_ID&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fontStyle=4" parent="1" vertex="1">
           <mxGeometry x="265" y="930" width="95" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4cyTBoL2mbChuSqTaiiy-27" value="" style="endArrow=none;html=1;rounded=0;" parent="1" source="4cyTBoL2mbChuSqTaiiy-26" target="4cyTBoL2mbChuSqTaiiy-8" edge="1">
@@ -403,7 +403,7 @@
         <mxCell id="4cyTBoL2mbChuSqTaiiy-28" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="570" y="1040" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cqat6_V7KJYR1HcZDutZ-6" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="cqat6_V7KJYR1HcZDutZ-6" value="" style="group;fontStyle=4" vertex="1" connectable="0" parent="1">
           <mxGeometry x="20" y="180" width="930" height="590" as="geometry" />
         </mxCell>
         <mxCell id="DnQ4--VGCIlJsh_Cb7lD-1" value="conference papers" style="rounded=0;whiteSpace=wrap;html=1;" parent="cqat6_V7KJYR1HcZDutZ-6" vertex="1">
@@ -415,6 +415,9 @@
             <mxPoint x="345" y="415" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="m6qgLcc2T48I289HVZYg-10" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;" edge="1" parent="cqat6_V7KJYR1HcZDutZ-6" source="DnQ4--VGCIlJsh_Cb7lD-41" target="m6qgLcc2T48I289HVZYg-8">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="DnQ4--VGCIlJsh_Cb7lD-41" value="Research activity" style="rounded=0;whiteSpace=wrap;html=1;" parent="cqat6_V7KJYR1HcZDutZ-6" vertex="1">
           <mxGeometry x="265" y="230" width="160" height="80" as="geometry" />
@@ -527,7 +530,7 @@
             <mxPoint x="450" y="-10" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4cyTBoL2mbChuSqTaiiy-15" value="Fund_ID" style="ellipse;whiteSpace=wrap;html=1;" parent="cqat6_V7KJYR1HcZDutZ-6" vertex="1">
+        <mxCell id="4cyTBoL2mbChuSqTaiiy-15" value="Fund_ID" style="ellipse;whiteSpace=wrap;html=1;fontStyle=4" parent="cqat6_V7KJYR1HcZDutZ-6" vertex="1">
           <mxGeometry x="685" y="530" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4cyTBoL2mbChuSqTaiiy-20" value="" style="endArrow=none;html=1;rounded=0;" parent="cqat6_V7KJYR1HcZDutZ-6" source="4cyTBoL2mbChuSqTaiiy-15" target="4cyTBoL2mbChuSqTaiiy-13" edge="1">
@@ -562,6 +565,15 @@
         </mxCell>
         <mxCell id="m6qgLcc2T48I289HVZYg-3" value="sponsors" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="cqat6_V7KJYR1HcZDutZ-6">
           <mxGeometry x="440" y="15" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6qgLcc2T48I289HVZYg-9" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;" edge="1" parent="cqat6_V7KJYR1HcZDutZ-6" source="m6qgLcc2T48I289HVZYg-7" target="m6qgLcc2T48I289HVZYg-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6qgLcc2T48I289HVZYg-7" value="Executive Office" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="cqat6_V7KJYR1HcZDutZ-6">
+          <mxGeometry x="740" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6qgLcc2T48I289HVZYg-8" value="&lt;div&gt;Is Executed in&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="cqat6_V7KJYR1HcZDutZ-6">
+          <mxGeometry x="570" y="230" width="90" height="80" as="geometry" />
         </mxCell>
         <mxCell id="cqat6_V7KJYR1HcZDutZ-10" value="Is A" style="triangle;whiteSpace=wrap;rotation=-90;" vertex="1" parent="1">
           <mxGeometry x="1187.5" y="117.5" width="75" height="80" as="geometry" />
