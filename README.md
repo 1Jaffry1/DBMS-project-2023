@@ -7,11 +7,16 @@ Group:
     Imani
 
 Abbreviations:
-Research Activity : R.A
+
+    Research Activity : R.A
+    Research Center : R.C
 
 
-Assumptions taken into account during ERD:
+
+Notes and assumptions:
+    
     1- An institute may handle many research activities, but a research actitvity is related to only one institute
 
-    2- A researcher may have multiple payments (transactions) for working on a R.A (reaserch activity)
-    
+    2- A researcher may have multiple payments (transactions) for working on a R.A (reaserch activity). The data for this will not contain the entire salary of the researcher, as it has already been stored in the researcher-R.A relationship
+
+    3- The correspondense relationship is 1-1 and this constraint is implemented by setting the researcher ID as "notnull" and "unique"
