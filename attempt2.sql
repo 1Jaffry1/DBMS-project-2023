@@ -1,10 +1,12 @@
-
+-- -----------------------------------------------------
+-- Table `Researcher`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Researcher` (
-  `Researcher_ID` INT NOT NULL,
+  `RID` INT NOT NULL,
   `Fname` VARCHAR(45) NULL,
   `Lname` VARCHAR(45) NULL,
   `Fav_field` VARCHAR(45) NULL,
-  PRIMARY KEY (`Researcher_ID`))
+  PRIMARY KEY (`RID`))
 ENGINE = InnoDB;
 
 
@@ -19,16 +21,16 @@ CREATE TABLE IF NOT EXISTS `Research Activity` (
   `INTL?` TINYINT NULL COMMENT '0 for domsetic and 1 for intl',
   `Date_Recieved` INT NULL,
   `Date_of_Admission` INT NULL,
-  `TYPE` VARCHAR(45) NULL,
+  `TYPE` VARCHAR(45) NULL COMMENT 'Generalization \n',
   `TYPE_DATE` DATE NULL,
-  `PLACE` VARCHAR(45) NULL,
+  `TYPE_PLACE` VARCHAR(45) NULL,
   `Correspondent` INT NOT NULL,
   PRIMARY KEY (`ACT-ID`),
   INDEX `Correspondent_idx` (`Correspondent` ASC) VISIBLE,
   UNIQUE INDEX `Correspondent_UNIQUE` (`Correspondent` ASC) VISIBLE,
   CONSTRAINT `Correspondent`
     FOREIGN KEY (`Correspondent`)
-    REFERENCES `Researcher` (`Researcher_ID`)
+    REFERENCES `Researcher` (`RID`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -53,10 +55,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Funding` (
   `InstID` INT NOT NULL,
-  `ACTid` INT NOT NULL,
+  `ACT-ID` INT NOT NULL,
   `Loan_value` INT NULL,
   `Donation_value` INT NULL,
-  PRIMARY KEY (`ACTid`, `InstID`),
+  PRIMARY KEY (`ACT-ID`, `InstID`),
   INDEX `RID_idx` (`InstID` ASC) VISIBLE,
   CONSTRAINT `InstID`
     FOREIGN KEY (`InstID`)
@@ -64,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `Funding` (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `ra key`
-    FOREIGN KEY (`ACTid`)
+    FOREIGN KEY (`ACT-ID`)
     REFERENCES `Research Activity` (`ACT-ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -76,13 +78,24 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Staff` (
   `Staff_id` INT NOT NULL,
-  `Type` VARCHAR(45) NULL COMMENT 'domain is \n\nexe\nrev\nman',
   `FName` VARCHAR(45) NULL,
   `LName` VARCHAR(45) NULL,
-  `BoolRA` TINYINT NULL,
+  `Bool-RA` TINYINT NULL,
   `Bool-INS` TINYINT NULL,
-  `RA_or_inst_num` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`Staff_id`))
+  `Type` VARCHAR(45) NULL COMMENT 'domain is :\nexe\nrev\nman',
+  `RA_or_inst_num` INT NOT NULL,
+  PRIMARY KEY (`Staff_id`),
+  INDEX `isnt_idx` (`RA_or_inst_num` ASC) VISIBLE,
+  CONSTRAINT `ra`
+    FOREIGN KEY (`RA_or_inst_num`)
+    REFERENCES `Research Activity` (`ACT-ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `isnt`
+    FOREIGN KEY (`RA_or_inst_num`)
+    REFERENCES `Institute` (`InstID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -90,14 +103,14 @@ ENGINE = InnoDB;
 -- Table `EXE_Office`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `EXE_Office` (
-  `Office_NO` INT NOT NULL,
-  `ACTid` INT NOT NULL,
+  `O_num` INT NOT NULL,
+  `ACT-ID` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Place` VARCHAR(45) NULL,
-  PRIMARY KEY (`Office_NO`),
-  INDEX `RID_idx` (`ACTid` ASC) VISIBLE,
+  PRIMARY KEY (`O_num`),
+  INDEX `RID_idx` (`ACT-ID` ASC) VISIBLE,
   CONSTRAINT `ACT_id`
-    FOREIGN KEY (`ACTid`)
+    FOREIGN KEY (`ACT-ID`)
     REFERENCES `Research Activity` (`ACT-ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -110,11 +123,18 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `edRecord` (
   `RECid` INT NOT NULL,
   `RID` INT NOT NULL,
+  `Inst_id` INT NULL,
   PRIMARY KEY (`RECid`, `RID`),
   INDEX `rid_idx` (`RID` ASC) VISIBLE,
+  INDEX `inst-id_idx` (`Inst_id` ASC) VISIBLE,
   CONSTRAINT `rid`
     FOREIGN KEY (`RID`)
-    REFERENCES `Researcher` (`Researcher_ID`)
+    REFERENCES `Researcher` (`RID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `inst-id`
+    FOREIGN KEY (`Inst_id`)
+    REFERENCES `Institute` (`InstID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -124,17 +144,17 @@ ENGINE = InnoDB;
 -- Table `Sponsoring`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Sponsoring` (
-  `RID` INT NOT NULL,
-  `INSTid` INT NOT NULL,
-  PRIMARY KEY (`RID`, `INSTid`),
-  INDEX `InstID_idx` (`INSTid` ASC) VISIBLE,
-  CONSTRAINT `RID`
-    FOREIGN KEY (`RID`)
+  `ACT-ID` INT NOT NULL,
+  `InstID` INT NOT NULL,
+  PRIMARY KEY (`ACT-ID`, `InstID`),
+  INDEX `InstID_idx` (`InstID` ASC) VISIBLE,
+  CONSTRAINT `ACT-ID`
+    FOREIGN KEY (`ACT-ID`)
     REFERENCES `Research Activity` (`ACT-ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `InstID`
-    FOREIGN KEY (`INSTid`)
+    FOREIGN KEY (`InstID`)
     REFERENCES `Institute` (`InstID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -147,6 +167,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Agreement` (
   `RID` INT NOT NULL,
   `ACT-ID` INT NOT NULL,
+  `Role` VARCHAR(45) NULL,
+  `End_Date` DATE NULL,
+  `Start_Date` DATE NULL,
+  `Total_Salary` VARCHAR(45) NULL,
   PRIMARY KEY (`RID`, `ACT-ID`),
   INDEX `ra key_idx` (`ACT-ID` ASC) VISIBLE,
   CONSTRAINT `ra key`
@@ -156,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `Agreement` (
     ON UPDATE NO ACTION,
   CONSTRAINT `rs key`
     FOREIGN KEY (`RID`)
-    REFERENCES `Researcher` (`Researcher_ID`)
+    REFERENCES `Researcher` (`RID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -220,13 +244,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Finances` (
   `TRid` INT NOT NULL,
+  `InstID` INT NULL,
   `Transaction type` VARCHAR(45) NULL,
   `Amount` INT NULL,
-  `Inst_num` INT NULL,
   PRIMARY KEY (`TRid`),
-  INDEX `inst_num_idx` (`Inst_num` ASC) VISIBLE,
+  INDEX `inst_num_idx` (`InstID` ASC) VISIBLE,
   CONSTRAINT `inst_num`
-    FOREIGN KEY (`Inst_num`)
+    FOREIGN KEY (`InstID`)
     REFERENCES `Institute` (`InstID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -241,6 +265,47 @@ CREATE TABLE IF NOT EXISTS `Conducted_by` (
   `InstID` INT NOT NULL,
   `ACT-ID` INT NOT NULL,
   PRIMARY KEY (`InstID`, `ACT-ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Duty`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Duty` (
+  `RID` INT NOT NULL,
+  `ACT-ID` INT NOT NULL,
+  `Duty-ID` INT NOT NULL,
+  `discription` VARCHAR(45) NULL,
+  PRIMARY KEY (`RID`, `ACT-ID`, `Duty-ID`),
+  CONSTRAINT `ag id`
+    FOREIGN KEY (`RID` , `ACT-ID`)
+    REFERENCES `Agreement` (`RID` , `ACT-ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Transaction`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Transaction` (
+  `NUM` INT NOT NULL,
+  `ACT-ID` INT NOT NULL,
+  `RID` INT NOT NULL,
+  `item_id` VARCHAR(45) NULL,
+  `Amount` VARCHAR(45) NULL,
+  PRIMARY KEY (`NUM`, `ACT-ID`, `RID`),
+  INDEX `ra_idx` (`ACT-ID` ASC) VISIBLE,
+  CONSTRAINT `ra`
+    FOREIGN KEY (`ACT-ID`)
+    REFERENCES `Research Activity` (`ACT-ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `rs`
+    FOREIGN KEY (`RID`)
+    REFERENCES `Researcher` (`RID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
