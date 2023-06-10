@@ -6,10 +6,14 @@ Group:
     Faghih
     Imani
 
+.mwb is the data model file that contains all the tables created using MySQL Workbench. You can import it by: Workbench: File> Open Model>> select the file.   
+
 Abbreviations:
 
     Research Activity : R.A
     Research Center : R.C
+    INTL? : Boolean showing wether the execution level of a R.A is domestic or intl.
+
 
 
 
@@ -24,4 +28,6 @@ Notes and assumptions:
     4- A R.A staff member can also work on another R.A at the same time. 
     (many-many relationship)
 
-    
+    5- A single relation has been created for staff members. Since we are the company handling research activities, we do not need to create different relations with different access levels for each single inst or EXEstaff. One relation is enough, and we can specify which one(R.A staff or INST-staff) a staff member is using boolean column.
+
+    6- The specialization of the R.A entity is done by using bool columns for each of the R.A types. Time and place columns are also added to the R.A relation.
